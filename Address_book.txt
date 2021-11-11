@@ -1,0 +1,332 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 16
+Server version: 8.0.27 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2021, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| mysql              |
+| payroll_service    |
+| performance_schema |
+| practise           |
+| speed              |
+| sys                |
+| test               |
++--------------------+
+8 rows in set (0.54 sec)
+
+mysql> create database address_Book_Service;
+Query OK, 1 row affected (0.26 sec)
+
+mysql> show databases;
++----------------------+
+| Database             |
++----------------------+
+| address_book_service |
+| information_schema   |
+| mysql                |
+| payroll_service      |
+| performance_schema   |
+| practise             |
+| speed                |
+| sys                  |
+| test                 |
++----------------------+
+9 rows in set (0.00 sec)
+
+mysql> drop database adress_Book_Service;
+ERROR 1008 (HY000): Can't drop database 'adress_book_service'; database doesn't exist
+mysql> drop database address_Book_Service;
+Query OK, 0 rows affected (1.01 sec)
+
+mysql> create database AddressBook_Service;
+Query OK, 1 row affected (0.18 sec)
+
+mysql> use AddressBook_Service;
+Database changed
+mysql> create table address_book_table;
+ERROR 4028 (HY000): A table must have at least one visible column.
+mysql> create table address_book_table(first_name varchar(50),last_name varchar(50),address varchar(150),city varchar(50),state
+    -> ^C
+mysql> create table address_book_table(first_name varchar(50),last_name varchar(50),address varchar(150),city varchar(50),state
+    -> ^C
+mysql> create table address_book_table(slno int(11)not null,first_name varchar(50)not null,last_name varchar(50)not null,address varchar(150)not null,city varchar(50)not null,state varchar(50)not null,zip int(11)not null,phonenumber int(11)not null,emaail varchar(100)not null,primary key(slno));
+Query OK, 0 rows affected, 3 warnings (1.89 sec)
+
+mysql> desc address_book_table;
++-------------+--------------+------+-----+---------+-------+
+| Field       | Type         | Null | Key | Default | Extra |
++-------------+--------------+------+-----+---------+-------+
+| slno        | int          | NO   | PRI | NULL    |       |
+| first_name  | varchar(50)  | NO   |     | NULL    |       |
+| last_name   | varchar(50)  | NO   |     | NULL    |       |
+| address     | varchar(150) | NO   |     | NULL    |       |
+| city        | varchar(50)  | NO   |     | NULL    |       |
+| state       | varchar(50)  | NO   |     | NULL    |       |
+| zip         | int          | NO   |     | NULL    |       |
+| phonenumber | int          | NO   |     | NULL    |       |
+| emaail      | varchar(100) | NO   |     | NULL    |       |
++-------------+--------------+------+-----+---------+-------+
+9 rows in set (0.58 sec)
+
+mysql> insert into address_book_table (slno,first_name,last_name,address,city,state,zip,phonenumber,emaail) values (1,'Jay','H','V.Nagar Hubli','Hubli','Karnataka',598001,9482424602,'jay@orkut.com');
+ERROR 1264 (22003): Out of range value for column 'phonenumber' at row 1
+mysql> insert into address_book_table (slno,first_name,last_name,address,city,state,zip,phonenumber,emaail) values (1,'Jay','H','V.Nagar Hubli','Hubli','Karnataka',598001,94824246,'jay@orkut.com');
+Query OK, 1 row affected (0.08 sec)
+
+mysql> select * from address_book_table
+    -> ^C
+mysql> select * from address_book_table;
++------+------------+-----------+---------------+-------+-----------+--------+-------------+---------------+
+| slno | first_name | last_name | address       | city  | state     | zip    | phonenumber | emaail        |
++------+------------+-----------+---------------+-------+-----------+--------+-------------+---------------+
+|    1 | Jay        | H         | V.Nagar Hubli | Hubli | Karnataka | 598001 |    94824246 | jay@orkut.com |
++------+------------+-----------+---------------+-------+-----------+--------+-------------+---------------+
+1 row in set (0.00 sec)
+
+mysql> insert into address_book_table (slno,first_name,last_name,address,city,state,zip,phonenumber,emaail) values (2,'Sam','BM','R.Nagar Davangere','Davangere','Karnatak',598231,942426,'sammy@orkut.com');
+Query OK, 1 row affected (0.64 sec)
+
+mysql> select * from address_book_table;
++------+------------+-----------+-------------------+-----------+-----------+--------+-------------+-----------------+
+| slno | first_name | last_name | address           | city      | state     | zip    | phonenumber | emaail          |
++------+------------+-----------+-------------------+-----------+-----------+--------+-------------+-----------------+
+|    1 | Jay        | H         | V.Nagar Hubli     | Hubli     | Karnataka | 598001 |    94824246 | jay@orkut.com   |
+|    2 | Sam        | BM        | R.Nagar Davangere | Davangere | Karnatak  | 598231 |      942426 | sammy@orkut.com |
++------+------------+-----------+-------------------+-----------+-----------+--------+-------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into address_book_table (slno,first_name,last_name,address,city,state,zip,phonenumber,emaail) values (3,'Junaid','S','UT.Arlington','Arlington','Texas',12054,8753612,'junaid@orkut.com');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from address_book_table;
++------+------------+-----------+-------------------+-----------+-----------+--------+-------------+------------------+
+| slno | first_name | last_name | address           | city      | state     | zip    | phonenumber | emaail           |
++------+------------+-----------+-------------------+-----------+-----------+--------+-------------+------------------+
+|    1 | Jay        | H         | V.Nagar Hubli     | Hubli     | Karnataka | 598001 |    94824246 | jay@orkut.com    |
+|    2 | Sam        | BM        | R.Nagar Davangere | Davangere | Karnatak  | 598231 |      942426 | sammy@orkut.com  |
+|    3 | Junaid     | S         | UT.Arlington      | Arlington | Texas     |  12054 |     8753612 | junaid@orkut.com |
++------+------------+-----------+-------------------+-----------+-----------+--------+-------------+------------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into address_book_table (slno,first_name,last_name,address,city,state,zip,phonenumber,emaail) values (4,'Guru','T','Hudco colony','Gadag','Karnatak',500010,76342112,'Guru@orkut.com'),('Karthik','D','N.Nagar Hospet','Hospet','Karnatak',562123,8363627,'KD@orkut.com');
+ERROR 1136 (21S01): Column count doesn't match value count at row 2
+mysql> insert into address_book_table (slno,first_name,last_name,address,city,state,zip,phonenumber,emaail) values (4,'Guru','T','Hudco colony','Gadag','Karnatak',500010,76342112,'Guru@orkut.com'),(5,'Karthik','D','N.Nagar Hospet','Hospet','Karnatak',562123,8363627,'KD@orkut.com');
+Query OK, 2 rows affected (1.30 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> select * from address_book_table;
++------+------------+-----------+-------------------+-----------+-----------+--------+-------------+------------------+
+| slno | first_name | last_name | address           | city      | state     | zip    | phonenumber | emaail           |
++------+------------+-----------+-------------------+-----------+-----------+--------+-------------+------------------+
+|    1 | Jay        | H         | V.Nagar Hubli     | Hubli     | Karnataka | 598001 |    94824246 | jay@orkut.com    |
+|    2 | Sam        | BM        | R.Nagar Davangere | Davangere | Karnatak  | 598231 |      942426 | sammy@orkut.com  |
+|    3 | Junaid     | S         | UT.Arlington      | Arlington | Texas     |  12054 |     8753612 | junaid@orkut.com |
+|    4 | Guru       | T         | Hudco colony      | Gadag     | Karnatak  | 500010 |    76342112 | Guru@orkut.com   |
+|    5 | Karthik    | D         | N.Nagar Hospet    | Hospet    | Karnatak  | 562123 |     8363627 | KD@orkut.com     |
++------+------------+-----------+-------------------+-----------+-----------+--------+-------------+------------------+
+5 rows in set (0.01 sec)
+
+mysql> insert into address_book_table (slno,first_name,last_name,address,city,state,zip,phonenumber,emaail) values (3,'Javed','K','GacchiBowli',Hyderabad','AndhraPradesh',564490,9867900,'javed@orkut.com');
+    '> ^C
+mysql> insert into address_book_table (slno,first_name,last_name,address,city,state,zip,phonenumber,emaail) values (6,'Javed','K','GacchiBowli',Hyderabad','AndhraPradesh',564490,9867900,'javed@orkut.com');
+    '> ^C
+mysql> insert into address_book_table (slno,first_name,last_name,address,city,state,zip,phonenumber,emaail) values (6,'Javed','K','Gacchi Bowli','Hyderabad','AndhraPradesh',504457,76890876,'javed@orkut.com');
+Query OK, 1 row affected (0.18 sec)
+
+mysql> select * from address_book_table;
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+| slno | first_name | last_name | address           | city      | state         | zip    | phonenumber | emaail           |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+|    1 | Jay        | H         | V.Nagar Hubli     | Hubli     | Karnataka     | 598001 |    94824246 | jay@orkut.com    |
+|    2 | Sam        | BM        | R.Nagar Davangere | Davangere | Karnatak      | 598231 |      942426 | sammy@orkut.com  |
+|    3 | Junaid     | S         | UT.Arlington      | Arlington | Texas         |  12054 |     8753612 | junaid@orkut.com |
+|    4 | Guru       | T         | Hudco colony      | Gadag     | Karnatak      | 500010 |    76342112 | Guru@orkut.com   |
+|    5 | Karthik    | D         | N.Nagar Hospet    | Hospet    | Karnatak      | 562123 |     8363627 | KD@orkut.com     |
+|    6 | Javed      | K         | Gacchi Bowli      | Hyderabad | AndhraPradesh | 504457 |    76890876 | javed@orkut.com  |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+6 rows in set (0.00 sec)
+
+mysql> update address_book_table set zip = 120548 where id = 3;
+ERROR 1054 (42S22): Unknown column 'id' in 'where clause'
+mysql> update address_book_table set zip = 120548 where slno = 3;
+Query OK, 1 row affected (0.07 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from address_book_table;
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+| slno | first_name | last_name | address           | city      | state         | zip    | phonenumber | emaail           |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+|    1 | Jay        | H         | V.Nagar Hubli     | Hubli     | Karnataka     | 598001 |    94824246 | jay@orkut.com    |
+|    2 | Sam        | BM        | R.Nagar Davangere | Davangere | Karnatak      | 598231 |      942426 | sammy@orkut.com  |
+|    3 | Junaid     | S         | UT.Arlington      | Arlington | Texas         | 120548 |     8753612 | junaid@orkut.com |
+|    4 | Guru       | T         | Hudco colony      | Gadag     | Karnatak      | 500010 |    76342112 | Guru@orkut.com   |
+|    5 | Karthik    | D         | N.Nagar Hospet    | Hospet    | Karnatak      | 562123 |     8363627 | KD@orkut.com     |
+|    6 | Javed      | K         | Gacchi Bowli      | Hyderabad | AndhraPradesh | 504457 |    76890876 | javed@orkut.com  |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+6 rows in set (1.07 sec)
+
+mysql> update address_book_table set phonenumber = 94242688 where slno = 2;
+Query OK, 1 row affected (0.88 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from address_book_table;
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+| slno | first_name | last_name | address           | city      | state         | zip    | phonenumber | emaail           |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+|    1 | Jay        | H         | V.Nagar Hubli     | Hubli     | Karnataka     | 598001 |    94824246 | jay@orkut.com    |
+|    2 | Sam        | BM        | R.Nagar Davangere | Davangere | Karnatak      | 598231 |    94242688 | sammy@orkut.com  |
+|    3 | Junaid     | S         | UT.Arlington      | Arlington | Texas         | 120548 |     8753612 | junaid@orkut.com |
+|    4 | Guru       | T         | Hudco colony      | Gadag     | Karnatak      | 500010 |    76342112 | Guru@orkut.com   |
+|    5 | Karthik    | D         | N.Nagar Hospet    | Hospet    | Karnatak      | 562123 |     8363627 | KD@orkut.com     |
+|    6 | Javed      | K         | Gacchi Bowli      | Hyderabad | AndhraPradesh | 504457 |    76890876 | javed@orkut.com  |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+6 rows in set (0.00 sec)
+
+mysql> update address_book_table set phonenumber = 87536124 where slno = 3;
+Query OK, 1 row affected (0.15 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from address_book_table;
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+| slno | first_name | last_name | address           | city      | state         | zip    | phonenumber | emaail           |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+|    1 | Jay        | H         | V.Nagar Hubli     | Hubli     | Karnataka     | 598001 |    94824246 | jay@orkut.com    |
+|    2 | Sam        | BM        | R.Nagar Davangere | Davangere | Karnatak      | 598231 |    94242688 | sammy@orkut.com  |
+|    3 | Junaid     | S         | UT.Arlington      | Arlington | Texas         | 120548 |    87536124 | junaid@orkut.com |
+|    4 | Guru       | T         | Hudco colony      | Gadag     | Karnatak      | 500010 |    76342112 | Guru@orkut.com   |
+|    5 | Karthik    | D         | N.Nagar Hospet    | Hospet    | Karnatak      | 562123 |     8363627 | KD@orkut.com     |
+|    6 | Javed      | K         | Gacchi Bowli      | Hyderabad | AndhraPradesh | 504457 |    76890876 | javed@orkut.com  |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+6 rows in set (0.00 sec)
+
+mysql> update address_book_table set phonenumber = 83636271 where slno = 5;
+Query OK, 1 row affected (0.81 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from address_book_table;
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+| slno | first_name | last_name | address           | city      | state         | zip    | phonenumber | emaail           |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+|    1 | Jay        | H         | V.Nagar Hubli     | Hubli     | Karnataka     | 598001 |    94824246 | jay@orkut.com    |
+|    2 | Sam        | BM        | R.Nagar Davangere | Davangere | Karnatak      | 598231 |    94242688 | sammy@orkut.com  |
+|    3 | Junaid     | S         | UT.Arlington      | Arlington | Texas         | 120548 |    87536124 | junaid@orkut.com |
+|    4 | Guru       | T         | Hudco colony      | Gadag     | Karnatak      | 500010 |    76342112 | Guru@orkut.com   |
+|    5 | Karthik    | D         | N.Nagar Hospet    | Hospet    | Karnatak      | 562123 |    83636271 | KD@orkut.com     |
+|    6 | Javed      | K         | Gacchi Bowli      | Hyderabad | AndhraPradesh | 504457 |    76890876 | javed@orkut.com  |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into address_book_table (slno,first_name,last_name,address,city,state,zip,phonenumber,emaail) values (7,'sachin','NB','RRJ road Yellapur','Sirsi','karnatak',564342,7854652,'sachin@orkut.com');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> select * from address_book_table;
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+| slno | first_name | last_name | address           | city      | state         | zip    | phonenumber | emaail           |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+|    1 | Jay        | H         | V.Nagar Hubli     | Hubli     | Karnataka     | 598001 |    94824246 | jay@orkut.com    |
+|    2 | Sam        | BM        | R.Nagar Davangere | Davangere | Karnatak      | 598231 |    94242688 | sammy@orkut.com  |
+|    3 | Junaid     | S         | UT.Arlington      | Arlington | Texas         | 120548 |    87536124 | junaid@orkut.com |
+|    4 | Guru       | T         | Hudco colony      | Gadag     | Karnatak      | 500010 |    76342112 | Guru@orkut.com   |
+|    5 | Karthik    | D         | N.Nagar Hospet    | Hospet    | Karnatak      | 562123 |    83636271 | KD@orkut.com     |
+|    6 | Javed      | K         | Gacchi Bowli      | Hyderabad | AndhraPradesh | 504457 |    76890876 | javed@orkut.com  |
+|    7 | sachin     | NB        | RRJ road Yellapur | Sirsi     | karnatak      | 564342 |     7854652 | sachin@orkut.com |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+7 rows in set (0.01 sec)
+
+mysql> delete from address_book_table where slno = 7;
+Query OK, 1 row affected (0.24 sec)
+
+mysql> select * from address_book_table;
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+| slno | first_name | last_name | address           | city      | state         | zip    | phonenumber | emaail           |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+|    1 | Jay        | H         | V.Nagar Hubli     | Hubli     | Karnataka     | 598001 |    94824246 | jay@orkut.com    |
+|    2 | Sam        | BM        | R.Nagar Davangere | Davangere | Karnatak      | 598231 |    94242688 | sammy@orkut.com  |
+|    3 | Junaid     | S         | UT.Arlington      | Arlington | Texas         | 120548 |    87536124 | junaid@orkut.com |
+|    4 | Guru       | T         | Hudco colony      | Gadag     | Karnatak      | 500010 |    76342112 | Guru@orkut.com   |
+|    5 | Karthik    | D         | N.Nagar Hospet    | Hospet    | Karnatak      | 562123 |    83636271 | KD@orkut.com     |
+|    6 | Javed      | K         | Gacchi Bowli      | Hyderabad | AndhraPradesh | 504457 |    76890876 | javed@orkut.com  |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into address_book_table (slno,first_name,last_name,address,city,state,zip,phonenumber,emaail) values (7,'sachin','NB','RRJ road Yellapur','Sirsi','karnatak',564342,7854652,'sachin@orkut.com');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from address_book_table;
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+| slno | first_name | last_name | address           | city      | state         | zip    | phonenumber | emaail           |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+|    1 | Jay        | H         | V.Nagar Hubli     | Hubli     | Karnataka     | 598001 |    94824246 | jay@orkut.com    |
+|    2 | Sam        | BM        | R.Nagar Davangere | Davangere | Karnatak      | 598231 |    94242688 | sammy@orkut.com  |
+|    3 | Junaid     | S         | UT.Arlington      | Arlington | Texas         | 120548 |    87536124 | junaid@orkut.com |
+|    4 | Guru       | T         | Hudco colony      | Gadag     | Karnatak      | 500010 |    76342112 | Guru@orkut.com   |
+|    5 | Karthik    | D         | N.Nagar Hospet    | Hospet    | Karnatak      | 562123 |    83636271 | KD@orkut.com     |
+|    6 | Javed      | K         | Gacchi Bowli      | Hyderabad | AndhraPradesh | 504457 |    76890876 | javed@orkut.com  |
+|    7 | sachin     | NB        | RRJ road Yellapur | Sirsi     | karnatak      | 564342 |     7854652 | sachin@orkut.com |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+7 rows in set (0.00 sec)
+
+mysql> delete from address_book_table where slno = 7;
+Query OK, 1 row affected (0.17 sec)
+
+mysql> select from address_book_table group by city;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from address_book_table group by city' at line 1
+mysql> select from address_book_table order by city;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from address_book_table order by city' at line 1
+mysql> select * from address_book_table order by city;
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+| slno | first_name | last_name | address           | city      | state         | zip    | phonenumber | emaail           |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+|    3 | Junaid     | S         | UT.Arlington      | Arlington | Texas         | 120548 |    87536124 | junaid@orkut.com |
+|    2 | Sam        | BM        | R.Nagar Davangere | Davangere | Karnatak      | 598231 |    94242688 | sammy@orkut.com  |
+|    4 | Guru       | T         | Hudco colony      | Gadag     | Karnatak      | 500010 |    76342112 | Guru@orkut.com   |
+|    5 | Karthik    | D         | N.Nagar Hospet    | Hospet    | Karnatak      | 562123 |    83636271 | KD@orkut.com     |
+|    1 | Jay        | H         | V.Nagar Hubli     | Hubli     | Karnataka     | 598001 |    94824246 | jay@orkut.com    |
+|    6 | Javed      | K         | Gacchi Bowli      | Hyderabad | AndhraPradesh | 504457 |    76890876 | javed@orkut.com  |
++------+------------+-----------+-------------------+-----------+---------------+--------+-------------+------------------+
+6 rows in set (0.03 sec)
+
+mysql> select address_book_table.state from address_book_table where state = 'Karnatak';
++----------+
+| state    |
++----------+
+| Karnatak |
+| Karnatak |
+| Karnatak |
++----------+
+3 rows in set (0.00 sec)
+
+mysql> update address_book_table set state = 'Karnatak' where slno =1;
+Query OK, 1 row affected (0.15 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select first_name,last_name,address_book_table.state from address_book_table where state = 'Karnatak';
++------------+-----------+----------+
+| first_name | last_name | state    |
++------------+-----------+----------+
+| Jay        | H         | Karnatak |
+| Sam        | BM        | Karnatak |
+| Guru       | T         | Karnatak |
+| Karthik    | D         | Karnatak |
++------------+-----------+----------+
+4 rows in set (0.40 sec)
+
+mysql> select count address_book_table.state from address_book_table where state = 'Karnatak';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.state from address_book_table where state = 'Karnatak'' at line 1
+mysql> select count(state) address_book_table.state from address_book_table where state = 'Karnatak';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.state from address_book_table where state = 'Karnatak'' at line 1
+mysql> select count(state) address_book_table.state from address_book_table where state = 'Karnatak' group by state;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '.state from address_book_table where state = 'Karnatak' group by state' at line 1
+mysql>
